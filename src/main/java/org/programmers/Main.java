@@ -5,8 +5,15 @@ import java.util.*;
 // 알고리즘 문제
 class Solution {
     public int solution(int num1, int num2) {
-        int answer = num1 - num2;
-        return answer;
+        int check = 0;
+        if (num1 == num2) {
+            check = 1;
+        } else {
+            check = -1;
+        }
+        System.out.println("check = " + check);
+
+        return check;
     }
 }
 
@@ -16,7 +23,7 @@ public class Main {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
         int a = 2;
-        int b = 100;
+        int b = 2;
         s.solution(a, b);
     }
 }
