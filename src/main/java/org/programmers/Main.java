@@ -4,6 +4,10 @@ import java.util.*;
 
 // 알고리즘 문제
 class Solution {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f32c473739a5bdddf6ba508724b8cb1ee37694a0
 
     public int[] solution(int denum1, int num1, int denum2, int num2) {
         // 입력받은 두 분모의 최대공약수를 구한다.
@@ -61,16 +65,42 @@ class Solution {
 }
 
 
+<<<<<<< HEAD
+=======
+=======
+    public int solution(int age) {
+        int answer = 0;
+        int Year = 2022;
+        answer = Year - age + 1;
+        System.out.println("answer = " + answer);
+
+        return answer;
+    }
+}
+>>>>>>> 6e2aa8dff5a1b25eee7bf9c1a6c0adbf7ec53412
+>>>>>>> f32c473739a5bdddf6ba508724b8cb1ee37694a0
 //Main 클래스에서 Solution클래스 선언해주기
 public class Main {
 
     public static void main(String[] ars) {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f32c473739a5bdddf6ba508724b8cb1ee37694a0
         int a = 1;
         int b = 2;
         int c = 3;
         int d = 4;
         s.solution(a, b, c, d);
+<<<<<<< HEAD
+=======
+=======
+        int a = 40;
+
+        s.solution(a);
+>>>>>>> 6e2aa8dff5a1b25eee7bf9c1a6c0adbf7ec53412
+>>>>>>> f32c473739a5bdddf6ba508724b8cb1ee37694a0
     }
 }
