@@ -4,12 +4,14 @@ import java.util.*;
 
 // 알고리즘 문제
 class Solution {
-
-    public int[] solution(int[] numbers) {
-        int[] answer = new int[numbers.length];
-        for (int i = 0; i < numbers.length; i++) {
-            answer[i] = numbers[i] * 2;
+    public int solution(int[] array, int n) {
+        int answer = 0;
+        for (int j : array) {
+            if (j == n) {
+                answer++;
+            }
         }
+        System.out.println("answer = " + answer);
         return answer;
     }
 }
@@ -20,8 +22,9 @@ public class Main {
     public static void main(String[] ars) {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
-        int[] numbers = {1, 2, 3, 4};
-        s.solution(numbers);
+        int[] array = {1, 2, 3, 3, 5};
+        int n = 3;
+        s.solution(array, n);
 
     }
 }
