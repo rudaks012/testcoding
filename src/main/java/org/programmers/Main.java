@@ -39,6 +39,7 @@ class Solution {
             if (max == countArray[i] && answer != array[i]) {
                 answer = -1;
             }
+            System.out.println(countArray[i]);
         }
         return answer;
 
