@@ -11,7 +11,7 @@ class Solution {
         int subtracNumber = total % num == 0 ? num / 2 : num / 2 - 1;
 
         int startNumber = middleNumber - subtracNumber;
-≠
+
         for (int i = 0; i < num; i++) {
             answer[i] = startNumber + i;
         }
