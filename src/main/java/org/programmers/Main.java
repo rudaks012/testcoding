@@ -3,21 +3,10 @@ package org.programmers;
 import java.util.Arrays;
 
 class Solution {
-    public int[] solution(int num, int total) {
 
-        int[] answer = new int[num];
+    public int solution(int M, int N) {
 
-        int middleNumber = total / num;
-        int subtracNumber = total % num == 0 ? num / 2 : num / 2 - 1;
-
-        int startNumber = middleNumber - subtracNumber;
-
-        for (int i = 0; i < num; i++) {
-            answer[i] = startNumber + i;
-        }
-        System.out.println(Arrays.toString(answer));
-
-        return answer;
+        return (M * N) - 1;
     }
 }
 
@@ -27,6 +16,6 @@ public class Main {
     public static void main(String[] ars) {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
-        s.solution(3, 12);
+        s.solution(2, 5);
     }
 }
