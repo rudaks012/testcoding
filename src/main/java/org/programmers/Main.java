@@ -1,14 +1,11 @@
 package org.programmers;
 
+import java.util.Arrays;
+
 class Solution {
     public int solution(int[] array, int height) {
-        int answer = 0;
-        for (int i : array) {
-            if (i > height) {
-                answer += 1;
-            }
-        }
-        return answer;
+        //stream 변경
+        return (int) Arrays.stream(array).filter(i -> i > height).count();
     }
 }
 
