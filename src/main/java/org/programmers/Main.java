@@ -3,9 +3,19 @@ package org.programmers;
 import java.util.Arrays;
 
 class Solution {
-    public int solution(int[] array, int height) {
-        //stream 변경
-        return (int) Arrays.stream(array).filter(i -> i > height).count();
+
+    public int solution(int[] dot) {
+        int answer = 0;
+        if (dot[0] > 0 && dot[1] > 0) {
+            answer = 1;
+        } else if (dot[0] < 0 && dot[1] > 0) {
+            answer = 2;
+        } else if (dot[0] < 0 && dot[1] < 0) {
+            answer = 3;
+        } else if (dot[0] > 0 && dot[1] < 0) {
+            answer = 4;
+        }
+        return answer;
     }
 }
 
@@ -16,6 +26,6 @@ public class Main {
     public static void main(String[] ars) {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
-        s.solution(new int[]{149,180,192,170}, 167);
+        s.solution(new int[]{2, 4});
     }
 }
