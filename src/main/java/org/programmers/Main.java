@@ -1,12 +1,14 @@
 package org.programmers;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
 
     public int solution(int[] numbers) {
-        int[] sort = Arrays.stream(numbers).sorted().toArray();
-        return sort[sort.length-1] * sort[sort.length-2];
+        int max = IntStream.of(numbers).max().orElse(0);
+        int max2 = IntStream.of(numbers).filter(i -> i != max).max().orElse(0);
+        return max * max2;
     }
 }
 
