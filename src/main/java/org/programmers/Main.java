@@ -1,13 +1,14 @@
 package org.programmers;
 
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
 
-    public int[] solution(String[] strlist) {
-        return Arrays.stream(strlist)
-                     .mapToInt(String::length)
-                     .toArray();
+    public int solution(int n) {
+
+        return (int) IntStream.rangeClosed(1, n)
+                              .filter(i -> n % i == 0)
+                              .count();
     }
 }
 
@@ -18,6 +19,6 @@ public class Main {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
 
-        s.solution(new String[]{"We", "are", "the", "world!"});
+        s.solution(100);
     }
 }
