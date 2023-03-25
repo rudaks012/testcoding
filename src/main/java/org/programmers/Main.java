@@ -1,8 +1,19 @@
 package org.programmers;
 
+import java.util.Arrays;
+
 class Solution {
-    public int solution(int slice, int n) {
-        return (n + (slice - 1)) / slice;
+
+    public int solution(int[] sides) {
+        int answer = 0;
+        int max = Arrays.stream(sides).sorted().max().orElse(0);
+        int sum = Arrays.stream(sides).filter(i -> i != max).sum();
+        if (max < sum) {
+            answer = 1;
+        } else {
+            answer = 2;
+        }
+        return answer;
     }
 }
 
@@ -13,6 +24,6 @@ public class Main {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
 
-        s.solution(7, 10);
+        s.solution(new int[]{199, 72, 222});
     }
 }
