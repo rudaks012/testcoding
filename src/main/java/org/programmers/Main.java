@@ -3,19 +3,18 @@ package org.programmers;
 import java.util.Arrays;
 
 class Solution {
-
     public int solution(int[] sides) {
-        int answer = 0;
-        int max = Arrays.stream(sides).sorted().max().orElse(0);
-        int sum = Arrays.stream(sides).filter(i -> i != max).sum();
-        if (max < sum) {
-            answer = 1;
-        } else {
-            answer = 2;
+        int sum = 0;
+        int max = 0;
+        for (int side : sides) {
+            sum += side;
+            max = Math.max(max, side);
         }
-        return answer;
+
+        return (sum - max) > max ? 1 : 2;
     }
 }
+
 
 //Main 클래스에서 Solution클래스 선언해주기
 public class Main {
