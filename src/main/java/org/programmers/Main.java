@@ -1,15 +1,8 @@
 package org.programmers;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 class Solution {
-    public int[] solution(int[] num_list) {
-        List<Integer> list = IntStream.of(num_list).boxed().collect(Collectors.toList());
-        Collections.reverse(list);
-        return list.stream().mapToInt(i -> i).toArray();
+    public int solution(int slice, int n) {
+        return (n + (slice - 1)) / slice;
     }
 }
 
@@ -20,6 +13,6 @@ public class Main {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
 
-        s.solution(new int[]{1, 2, 3, 4, 5});
+        s.solution(7, 10);
     }
 }
