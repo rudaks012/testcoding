@@ -3,15 +3,9 @@ package org.programmers;
 import java.util.Arrays;
 
 class Solution {
-    public int solution(int[] sides) {
-        int sum = 0;
-        int max = 0;
-        for (int side : sides) {
-            sum += side;
-            max = Math.max(max, side);
-        }
-
-        return (sum - max) > max ? 1 : 2;
+    public String solution(String my_string) {
+        StringBuffer sb = new StringBuffer(my_string);
+        return sb.reverse().toString();
     }
 }
 
@@ -23,6 +17,6 @@ public class Main {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
 
-        s.solution(new int[]{199, 72, 222});
+        s.solution("jaron");
     }
 }
