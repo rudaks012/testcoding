@@ -3,9 +3,10 @@ package org.programmers;
 import java.util.Arrays;
 
 class Solution {
-    public String solution(String my_string) {
-        StringBuffer sb = new StringBuffer(my_string);
-        return sb.reverse().toString();
+
+    public String solution(String my_string, String letter) {
+
+        return my_string.replace(letter, "");
     }
 }
 
@@ -17,6 +18,6 @@ public class Main {
         Solution s = new Solution();
         //입력요소를 선언해줘야 출력값이 나옴
 
-        s.solution("jaron");
+        s.solution("abcdef", "f");
     }
 }
