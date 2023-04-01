@@ -8,6 +8,7 @@ class Solution {
     public int[][] solution(int[] num_list, int n) {
         int row = (int) Math.ceil((double) num_list.length / n);
 
+        //배열을 2차원으로 만들어주는 코드
         return IntStream.range(0, row)
             .mapToObj(i ->Arrays.copyOfRange(num_list, i * n, Math.min((i + 1) * n, num_list.length)))
             .toArray(int[][]::new);
