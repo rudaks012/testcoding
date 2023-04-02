@@ -9,12 +9,12 @@ class Solution {
     public int[] solution(int n, int[] x1, int[] y1, int[] x2, int[] y2) {
 
         List<List<Integer>> listAdjust = IntStream.range(0, n)
-                                               .<List<Integer>>mapToObj(i -> new ArrayList<>())
-                                               .collect(Collectors.toList());
+                                                  .<List<Integer>>mapToObj (i -> new ArrayList<>())
+                                                  .collect(Collectors.toList());
 
         IntStream.range(0, n).forEach(i -> {
             IntStream.range(i + 1, n).forEach(j -> {
-                if (shareBorder(x1[i], y1[i], x2[i], y2[i], x1[j], y1[j], x2[j], y2[j])) {
+                if(shareBorder(x1[i], y1[i], x2[i], y2[i], x1[j], y1[j], x2[j], y2[j])) {
                     listAdjust.get(i).add(j);
                     listAdjust.get(j).add(i);
                 }
@@ -22,37 +22,42 @@ class Solution {
         });
 
         int[] answer = new int[n];
-        for (int i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++) {
             boolean[] visited = new boolean[n];
-            answer[i] = dfs(i, listAdjust, visited) ;
+            answer[i] = dfs(i, listAdjust, visited);
         }
 
         return answer;
-    }
 
+    }
     private boolean shareBorder(int x1a, int y1a, int x2a, int y2a, int x1b, int y1b, int x2b, int y2b) {
         return isShareBorder(x1a, y1a, x2a, y2a, x1b, y1b, x2b, y2b);
     }
 
-    private boolean isShareBorder(int x1a, int y1a, int x2a, int y2a, int x1b, int y1b, int x2b,
-        int y2b) {
+    private boolean isShareBorder(int x1a, int y1a, int x2a, int y2a, int x1b, int y1b, int x2b, int y2b) {
         return (x1a == x2b || x2a == x1b || y1a == y2b || y2a == y1b) &&
             (Math.max(x1a, x1b) < Math.min(x2a, x2b) || Math.max(y1a, y1b) < Math.min(y2a, y2b));
+
     }
 
-    private int dfs(int node, List<List<Integer>> adjList, boolean[] visited) {
-        if (visited[node]) {
+    // dfs
+    //깊이우선탐색 알고리즘
+
+    private int dfs(int node, List<List<Integer>> listAdjust, boolean[] visited) {
+
+        if(visited[node]) {
             return 0;
         }
+
         visited[node] = true;
 
         int count = 1;
 
-        count += adjList.get(node)
-                        .stream()
-                        .mapToInt(neighbor -> neighbor)
-                        .map(neighbor -> dfs(neighbor, adjList, visited))
-                        .sum();
+        count += listAdjust.get(node)
+                           .stream()
+                           .mapToInt(neighbor -> neighbor)
+                           .map(neighbor -> dfs(neighbor, listAdjust, visited))
+                           .sum();
 
         return count;
     }
