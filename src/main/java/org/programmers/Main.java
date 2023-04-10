@@ -3,20 +3,28 @@ package org.programmers;
 import java.util.Arrays;
 
 class Solution {
-    public String solution(String my_string, int n) {
-        StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < my_string.length(); i++) {
-            result.append(String.valueOf(my_string.charAt(i)).repeat(Math.max(0, n)));
-        }
+    public int solution(int price) {
 
-        return result.toString();
+        int answer = 0;
+       if (price >= 500000) {
+           answer = (int) (price * 0.8);
+       } else if (price >= 300000) {
+           answer = (int) (price * 0.9);
+       } else if (price >= 100000) {
+           answer = (int) (price * 0.95);
+       } else {
+           answer = price;
+       }
+        System.out.println("answer = " + answer);
+        return answer;
     }
 }
+
 public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution("hello",3);
+        s.solution(150000);
     }
 }
