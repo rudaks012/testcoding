@@ -1,21 +1,14 @@
 package org.programmers;
 
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
+
     public int[] solution(int n) {
 
-        int oddCount = (n + 1) / 2;
-        int[] answer = new int[oddCount];
-
-        int count = 1;
-        for (int i = 0; i < oddCount; i++) {
-            answer[i] = count;
-            count += 2;
-        }
-
-
-        return answer;
+        return IntStream.rangeClosed(1, n)
+                        .filter(i -> i % 2 == 1)
+                        .toArray();
     }
 }
 
