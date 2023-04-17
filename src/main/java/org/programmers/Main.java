@@ -1,13 +1,9 @@
 package org.programmers;
 
 class Solution {
-
-    public String solution(String my_string) {
-        String answer = "";
-        answer = my_string.replaceAll("[aejou]", "");
+    public int solution(String message) {
+        int answer = message.length() * 2;
         return answer;
-
-
     }
 }
 
