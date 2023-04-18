@@ -1,14 +1,17 @@
 package org.programmers;
 
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 class Solution {
 
     public String solution(String cipher, int code) {
-        StringBuilder answer = new StringBuilder();
-        for (int i = code - 1; i < cipher.length(); i += code) {
-            answer.append(cipher.charAt(i));
-        }
-        return answer.toString();
+
+        return IntStream.range(0, cipher.length())
+                        .filter(i -> i % code == code - 1)
+                        .mapToObj(c -> String.valueOf(cipher.charAt(c)))
+                        .collect(Collectors.joining());
     }
 }
 
