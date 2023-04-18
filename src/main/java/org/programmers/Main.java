@@ -1,11 +1,14 @@
 package org.programmers;
 
 
-
 class Solution {
-    public int solution(int n) {
-        double result = Math.sqrt(n) % 1 == 0 ? 1 : 2;
-        return (int) result;
+
+    public String solution(String cipher, int code) {
+        StringBuilder answer = new StringBuilder();
+        for (int i = code - 1; i < cipher.length(); i += code) {
+            answer.append(cipher.charAt(i));
+        }
+        return answer.toString();
     }
 }
 
@@ -13,6 +16,6 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution(976);
+        s.solution("dfjardstddetckdaccccdegk", 4);
     }
 }
