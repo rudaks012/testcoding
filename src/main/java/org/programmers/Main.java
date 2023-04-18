@@ -1,38 +1,24 @@
 package org.programmers;
 
-import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 class Solution {
 
-    public int solution(int hp) {
-        int answer = 0;
-        // 장성개미 사용
-        while (hp >= 5) {
-            hp -= 5;
-            answer++;
-        }
+    public int solution(String str1, String str2) {
 
-        // 병정개미 사용
-        while (hp >= 3) {
-            hp -= 3;
-            answer++;
-        }
-
-        // 일개미 사용
-        while (hp >= 1) {
-            hp -= 1;
-            answer++;
-        }
-
-        return answer;
+        return Optional.of(Stream.of(str1.contains(str2))
+                                 .mapToInt(i -> i ? 1 : 2)
+                                 .findFirst())
+                                 .orElseThrow()
+                                 .getAsInt();
     }
-
 }
 
 public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution(23);
+        s.solution("ab6CDE443fgh22iJKlmn1o", "6CD");
     }
 }
