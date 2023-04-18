@@ -4,18 +4,35 @@ import java.util.Arrays;
 
 class Solution {
 
-    public int solution(String my_string) {
-        return Arrays.stream(my_string.replaceAll("[^0-9]", "")
-                                      .split(""))
-                     .mapToInt(Integer::parseInt)
-                     .sum();
+    public int solution(int hp) {
+        int answer = 0;
+        // 장성개미 사용
+        while (hp >= 5) {
+            hp -= 5;
+            answer++;
+        }
+
+        // 병정개미 사용
+        while (hp >= 3) {
+            hp -= 3;
+            answer++;
+        }
+
+        // 일개미 사용
+        while (hp >= 1) {
+            hp -= 1;
+            answer++;
+        }
+
+        return answer;
     }
+
 }
 
 public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution("aAb1B2cC34oOp");
+        s.solution(23);
     }
 }
