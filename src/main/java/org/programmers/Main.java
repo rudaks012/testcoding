@@ -1,17 +1,21 @@
 package org.programmers;
 
 
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 class Solution {
+    public String solution(String my_string) {
+        StringBuilder answer = new StringBuilder();
+        char[] charArray = my_string.toCharArray();
+        for (char c : charArray) {
+            if (Character.isUpperCase(c)) {
+                String data = String.valueOf(c).toLowerCase();
+                answer.append(data);
+            } else {
+                String data = String.valueOf(c).toUpperCase();
+                answer.append(data);
+            }
+        }
 
-    public String solution(String cipher, int code) {
-
-        return IntStream.range(0, cipher.length())
-                        .filter(i -> i % code == code - 1)
-                        .mapToObj(c -> String.valueOf(cipher.charAt(c)))
-                        .collect(Collectors.joining());
+        return answer.toString();
     }
 }
 
@@ -19,6 +23,6 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution("dfjardstddetckdaccccdegk", 4);
+        s.solution("cccCCC");
     }
 }
