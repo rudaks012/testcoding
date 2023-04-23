@@ -9,6 +9,7 @@ class Solution {
 
         //chars == IntStream -> char로 바꾼후 데이터 취함
         return rsp.chars()
+                  //mapToObj == IntStream -> Object로 바꾼후 데이터 취함
                   .mapToObj(c -> c == '2' ? '0' : (c == '0' ? '5' : '2'))
                   .map(String::valueOf)
                   //join == String.join
