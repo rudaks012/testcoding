@@ -1,14 +1,12 @@
 package org.programmers;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 class Solution {
 
-    public int solution(int[] box, int n) {
-        return Arrays.stream(box)
-                     .map(j -> (int) ((double) j / n))
-                     .reduce(1, (a, b) -> a * b);
+    public int solution(int[] numbers) {
+        int answer = 0;
+        return answer;
     }
 }
 
@@ -16,10 +14,7 @@ class Solution {
 public class Main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        for (int i = 0; i <= n; i++) {
-            System.out.println("*".repeat(i));
-        }
+        Solution s = new Solution();
+        s.solution(new int[]{1, 2, -3, 4, -5});
     }
 }
