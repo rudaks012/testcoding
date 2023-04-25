@@ -1,15 +1,12 @@
 package org.programmers;
 
-
-import java.util.stream.IntStream;
+import java.util.Arrays;
 
 class Solution {
-
-    public int solution(int n, int t) {
-        n *= IntStream.range(0, t)
-                      .map(i -> 2)
-                      .reduce(1, (a, b) -> a * b);
-        return n;
+    public int solution(int[] box, int n) {
+        return Arrays.stream(box)
+                     .map(j -> (int) ((double) j / n))
+                     .reduce(1, (a, b) -> a * b);
     }
 }
 
@@ -18,6 +15,6 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution(2, 10);
+        s.solution(new int[]{1, 1, 1}, 1);
     }
 }
