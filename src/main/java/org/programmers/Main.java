@@ -15,7 +15,7 @@ class Solution {
             if (arr[i] == 0) {
                 answer += i;
             }
-        }
+
         return answer;
 
     }
