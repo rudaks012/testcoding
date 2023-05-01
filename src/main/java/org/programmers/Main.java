@@ -5,14 +5,9 @@ import java.util.Arrays;
 class Solution {
 
     public int[] solution(int n, int[] numlist) {
-        int[] answer = {};
-        for (int j : numlist) {
-            if (j % n == 0) {
-                answer = Arrays.copyOf(answer, answer.length + 1);
-                answer[answer.length - 1] = j;
-            }
-        }
-        return answer;
+        return Arrays.stream(numlist)
+            .filter( num -> num % n == 0)
+            .toArray();
     }
 }
 
