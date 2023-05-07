@@ -1,18 +1,23 @@
 package org.programmers;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 class Solution {
     public int[] solution(int[] numbers, String direction) {
-        int length = numbers.length;
-        int[] rotated = new int[length];
+        List<Integer> list = Arrays.stream(numbers)
+                .boxed()
+                .collect(Collectors.toList());
 
         if (direction.equals("right")) {
-            rotated[0] = numbers[length - 1];
-            System.arraycopy(numbers, 0, rotated, 1, length - 1);
-        } else if (direction.equals("left")) {
-            rotated[length - 1] = numbers[0];
-            System.arraycopy(numbers, 1, rotated, 0, length - 1);
+            list.add(0, list.get(list.size() - 1));
+            list.remove(list.size() - 1);
+        } else {
+            list.add(list.size(), list.get(0));
+            list.remove(0);
         }
-        return rotated;
+        return list.stream().mapToInt(Integer::intValue).toArray();
     }
 }
 
