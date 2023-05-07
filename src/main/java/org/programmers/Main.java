@@ -1,16 +1,18 @@
 package org.programmers;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 class Solution {
+    public int[] solution(int[] numbers, String direction) {
+        int length = numbers.length;
+        int[] rotated = new int[length];
 
-    public String solution(String my_string, int num1, int num2) {
-        List<String> list = Arrays.stream(my_string.split("")).collect(Collectors.toList());
-        Collections.swap(list, num1, num2);
-        return String.join("", list);
+        if (direction.equals("right")) {
+            rotated[0] = numbers[length - 1];
+            System.arraycopy(numbers, 0, rotated, 1, length - 1);
+        } else if (direction.equals("left")) {
+            rotated[length - 1] = numbers[0];
+            System.arraycopy(numbers, 1, rotated, 0, length - 1);
+        }
+        return rotated;
     }
 }
 
@@ -18,6 +20,6 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution("hello", 1, 2);
+        s.solution(new int[]{1, 2, 3}, "right");
     }
 }
