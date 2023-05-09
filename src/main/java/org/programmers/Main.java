@@ -1,23 +1,12 @@
 package org.programmers;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 class Solution {
-    public int[] solution(int[] numbers, String direction) {
-        List<Integer> list = Arrays.stream(numbers)
-                .boxed()
-                .collect(Collectors.toList());
+    public String solution(int age) {
 
-        if (direction.equals("right")) {
-            list.add(0, list.get(list.size() - 1));
-            list.remove(list.size() - 1);
-        } else {
-            list.add(list.size(), list.get(0));
-            list.remove(0);
-        }
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+        int tens = age / 10;
+        int ones = age % 10;
+        return String.valueOf(alphabet[tens]) + alphabet[ones];
     }
 }
 
@@ -25,6 +14,6 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution(new int[]{1, 2, 3}, "right");
+        s.solution(23);
     }
 }
