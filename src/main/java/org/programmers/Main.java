@@ -1,12 +1,19 @@
 package org.programmers;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 class Solution {
     public String solution(int age) {
+        String collect = IntStream.iterate(age, n -> n > 0, n -> n / 10)
+                .map(n -> n % 10)
+                .mapToObj(i -> (char) ('a' + i))
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        StringBuilder sb = new StringBuilder(collect);
 
-        char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
-        int tens = age / 10;
-        int ones = age % 10;
-        return String.valueOf(alphabet[tens]) + alphabet[ones];
+
+        return sb.reverse().toString();
     }
 }
 
