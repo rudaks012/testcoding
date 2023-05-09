@@ -1,21 +1,13 @@
 package org.programmers;
 
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class Solution {
-    public int[] solution(int[] array) {
-        int[] answer = new int[2];
-        int maxNumber = 0;
-
-        for (int j = 0; j < array.length; j++) {
-            if (maxNumber < array[j]) {
-                answer[0] = array[j];
-                answer[1] = j;
-                maxNumber = array[j];
-            }
-        }
-
-        return answer;
+    public int solution(int n) {
+        return IntStream.rangeClosed(1, n)
+                .filter(i -> (i * 6) % n == 0)
+                .findFirst()
+                .getAsInt();
     }
 }
 
@@ -23,6 +15,6 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution(new int[]{1, 8, 3});
+        s.solution(6);
     }
 }
