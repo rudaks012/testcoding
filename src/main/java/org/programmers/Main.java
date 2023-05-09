@@ -1,19 +1,14 @@
 package org.programmers;
 
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 class Solution {
     public String solution(int age) {
-        String collect = IntStream.iterate(age, n -> n > 0, n -> n / 10)
-                .map(n -> n % 10)
-                .mapToObj(i -> (char) ('a' + i))
-                .map(String::valueOf)
+
+        return  String.valueOf(age)
+                .chars()
+                .mapToObj(i ->String.valueOf((char) (49 + i)))
                 .collect(Collectors.joining());
-        StringBuilder sb = new StringBuilder(collect);
-
-
-        return sb.reverse().toString();
     }
 }
 
