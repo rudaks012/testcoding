@@ -1,13 +1,13 @@
 package org.programmers;
 
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 class Solution {
-    public int solution(int n) {
+    public OptionalInt solution(int n) {
         return IntStream.rangeClosed(1, n)
-                .filter(i -> (i * 6) % n == 0)
-                .findFirst()
-                .getAsInt();
+                .filter(i -> (i * 6) % n ==0)
+                .findFirst();
     }
 }
 
