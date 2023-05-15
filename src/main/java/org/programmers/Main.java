@@ -3,13 +3,16 @@ package org.programmers;
 class Solution {
     public int solution(int order) {
         String[] answer = String.valueOf(order).split("");
-        String[] numbers = {"3", "6", "9"};
         int count = 0;
         for (String s : answer) {
-            for (String number : numbers) {
-                if (s.equals(number)) {
-                    count++;
-                }
+            if (s.equals("3")) {
+                count++;
+            }
+            if (s.equals("6")) {
+                count++;
+            }
+            if (s.equals("9")) {
+                count++;
             }
         }
         return count;
