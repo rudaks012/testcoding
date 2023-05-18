@@ -1,4 +1,7 @@
-package bank;
+package bank.service;
+
+import bank.account.BankAccount;
+import bank.BankTransaction;
 
 public class BankService {
 
