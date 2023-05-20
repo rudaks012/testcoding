@@ -1,7 +1,7 @@
 package bank.service;
 
-import bank.account.BankAccount;
 import bank.BankTransaction;
+import bank.account.BankAccount;
 
 public class BankService {
 

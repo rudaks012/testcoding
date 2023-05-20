@@ -16,6 +16,7 @@ public class GyeBank {
 
         service.performTransaction(account, new WithdrawTransaction(), 200);
         System.out.println(account.getBalance()); // 1300
+
     }
 
 }
