@@ -14,7 +14,7 @@ public class BankAccount {
         if (balance >= amount) {
             balance -= amount;
         } else {
-            throw new IllegalArgumentException("자금 부족");
+            throw new lackOfFundsException();
         }
     }
 
