@@ -3,30 +3,40 @@ package bank;
 import bank.account.BankAccount;
 import bank.customer.Customer;
 import bank.deposit.DepositTransaction;
+import bank.manage.BankManager;
 import bank.service.BankService;
+import bank.teller.BankTeller;
 import bank.withdraw.WithdrawTransaction;
 
 public class GyeBank {
 
     public static void main(String[] args) {
         BankService service = new BankService();
+
+        BankManager manager = new BankManager();
+        BankTeller teller = new BankTeller();
+
         Customer john = new Customer("John");
+        manager.addCustomer(service, john);
 
-        BankAccount johnAccount1 = new BankAccount("123456", 1000);
-        BankAccount johnAccount2 = new BankAccount("789101", 500);
+        BankAccount johnAccount = new BankAccount("123456", 1000);
+        teller.createAccount(john, johnAccount);
 
-        john.addAccount(johnAccount1);
-        john.addAccount(johnAccount2);
-        service.addCustomer(john);
-        service.performTransaction(new DepositTransaction(), service.getCustomer("John").getAccount("123456"), 500);
-        System.out.println(service.getCustomer("John").getAccount("123456").getBalance()); // 1500
+        // Add another customer
+        Customer jane = new Customer("Jane");
+        manager.addCustomer(service, jane);
 
-        service.performTransaction(new WithdrawTransaction(), service.getCustomer("John").getAccount("123456"), 200);
-        System.out.println(service.getCustomer("John").getAccount("123456").getBalance()); // 1300
+        BankAccount janeAccount = new BankAccount("654321", 500);
+        teller.createAccount(jane, janeAccount);
 
-        service.performTransfer(service.getCustomer("John").getAccount("123456"), service.getCustomer("John").getAccount("789101"), 300);
-        System.out.println(service.getCustomer("John").getAccount("123456").getBalance()); // 1000
-        System.out.println(service.getCustomer("John").getAccount("789101").getBalance()); // 800
+        // Now John can perform transactions
+        service.performTransaction(new DepositTransaction(), johnAccount, 500);
+
+        // John can also withdraw money
+        service.performTransaction(new WithdrawTransaction(), johnAccount, 200);
+
+        // John can transfer money to Jane
+        service.performTransfer(johnAccount, janeAccount, 300);
     }
-
 }
+
