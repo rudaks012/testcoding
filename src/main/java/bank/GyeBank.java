@@ -22,20 +22,16 @@ public class GyeBank {
         BankAccount johnAccount = new BankAccount("123456", 1000);
         teller.createAccount(john, johnAccount);
 
-        // Add another customer
         Customer jane = new Customer("Jane");
         manager.addCustomer(service, jane);
 
         BankAccount janeAccount = new BankAccount("654321", 500);
         teller.createAccount(jane, janeAccount);
 
-        // Now John can perform transactions
         service.performTransaction(new DepositTransaction(), johnAccount, 500);
 
-        // John can also withdraw money
         service.performTransaction(new WithdrawTransaction(), johnAccount, 200);
 
-        // John can transfer money to Jane
         service.performTransfer(johnAccount, janeAccount, 300);
     }
 }
