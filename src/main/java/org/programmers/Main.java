@@ -1,16 +1,14 @@
 package org.programmers;
 
-import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String my_string) {
-        String answer = "";
-        String lowerCase = my_string.toLowerCase();
-        char[] chars = lowerCase.toCharArray();
-        Arrays.sort(chars);
-        answer = new String(chars);
-
-        return answer;
+        return my_string.toLowerCase()
+                .chars()
+                .sorted()
+                .mapToObj(c -> String.valueOf((char) c))
+                .collect(Collectors.joining());
     }
 }
 
