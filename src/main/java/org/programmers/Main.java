@@ -1,22 +1,26 @@
 package org.programmers;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 class Solution {
-   public String[] solution(String[] players, String[] callings) {
-       List<String> playerList = new ArrayList<>(List.of(players));
-       for (String calling : callings) {
-           int index = playerList.indexOf(calling);
-           if (index > 0) {
-               playerList.remove(index);
-               playerList.add(index - 1, calling);
-           }
-       }
-       return playerList.toArray(new String[0]);
+    public String[] solution(String[] players, String[] callings) {
+        Map<String, Integer> playerMap = new HashMap<>();
+        for (int i = 0; i < players.length; i++) {
+            playerMap.put(players[i], i);
+        }
+        for (String calling : callings) {
+            int index = playerMap.get(calling);
+            if (index > 0) {
+                String temp = players[index - 1];
+                players[index - 1] = calling;
+                players[index] = temp;
+                playerMap.put(calling, index - 1);
+                playerMap.put(temp, index);
+            }
+        }
+        return players;
     }
 }
+
 
 
 public class Main {
