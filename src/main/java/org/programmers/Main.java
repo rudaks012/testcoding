@@ -1,45 +1,32 @@
 package org.programmers;
 
 import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int[] solution(String[] keymap, String[] targets) {
         Map<Character, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < keymap.length; i++) {
-            for (int j = 0; j < keymap[i].length(); j++) {
-                char ch = keymap[i].charAt(j);
-                map.put(ch, Math.min(j + 1, map.getOrDefault(ch, Integer.MAX_VALUE)));
-            }
-        }
+        IntStream.range(0, keymap.length)
+                .forEach(i -> IntStream.range(0, keymap[i].length())
+                        .forEach(j -> map.compute(keymap[i].charAt(j),
+                                (ch, old) -> old == null || old > j + 1 ? j + 1 : old)));
 
-        int[] result = new int[targets.length];
-        Arrays.fill(result, -1);
-
-        for (int i = 0; i < targets.length; i++) {
-            int total = 0;
-            for (char ch : targets[i].toCharArray()) {
-                if (map.containsKey(ch)) {
-                    total += map.get(ch);
-                } else {
-                    total = -1;
-                    break;
-                }
-            }
-            result[i] = total;
-        }
-
-        return result;
+        return Arrays.stream(targets)
+                .mapToInt(target -> target.chars()
+                        .map(ch -> map.getOrDefault((char) ch, -1))
+                        .filter(value -> value != -1)
+                        .sum())
+                .toArray();
     }
 }
-
 
 
 public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-       int[] solution = s.solution(new String[] {"ABACD", "BCEFD"}, new String[] {"ABCD","AABB"});
+        int[] solution = s.solution(new String[]{"ABACD", "BCEFD"}, new String[]{"ABCD", "AABB"});
         System.out.println(Arrays.toString(solution));
     }
 }
