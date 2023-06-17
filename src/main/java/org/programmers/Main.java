@@ -12,6 +12,8 @@ class Solution {
             long subValue = Long.parseLong(numStr.substring(i, i + targetLength));
 
             // subValue가 targetValue보다 작거나 같으면 카운트를 증가시킵니다.
+            // subValue가 targetValue보다 크면 아무것도하지 않습니다.
+
             if (subValue <= targetValue) {
                 occurences++;
             }
