@@ -1,19 +1,13 @@
 package org.programmers;
 
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
     public int solution(int[] absolutes, boolean[] signs) {
-        int[] newNumber = new int[absolutes.length];
 
-        for (int i = 0; i < absolutes.length; i++) {
-            if(signs[i] == true) {
-                newNumber[i] = absolutes[i];
-            } else {
-                newNumber[i] = -absolutes[i];
-            }
-        }
-        return Arrays.stream(newNumber).sum();
+        return IntStream.range(0, absolutes.length)
+                .map(i -> signs[i] ? absolutes[i] : -absolutes[i])
+                .sum();
     }
 }
 
