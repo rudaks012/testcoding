@@ -1,31 +1,25 @@
 package org.programmers;
 
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.List;
 
 class Solution {
-    public int solution(int number, int limit, int power) {
-        int answer = 0;
-        for(int i = 1; i <= number; i++) {
-            int count = getDivisorCount(i);
-            answer += count > limit ? power : count;
-        }
-        return answer;
-    }
+    public int solution(int n) {
+        int sqrt = (int) Math.sqrt(n);
+        List<Integer> list = new ArrayList<>();
 
-    private int getDivisorCount(int n) {
-        int count = 0;
-        for (int i = 1; i * i <= n; i++) {
+        for (int i = 1; i <= sqrt; i++) {
             if (n % i == 0) {
-                // if divisors are not equal,
-                // add both
-                if (n / i == i) {
-                    count += 1;
-                } else {
-                    count += 2;
+                list.add(i);
+                if (i != n / i) {
+                    list.add(n / i);
                 }
             }
         }
-        return count;
+
+        return list.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 }
 
@@ -35,7 +29,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        int solution = s.solution(5, 3, 2);
+        int solution = s.solution(12);
         System.out.println(solution);
     }
 }
