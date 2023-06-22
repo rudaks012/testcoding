@@ -1,27 +1,18 @@
 package org.programmers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.IntStream;
 
 class Solution {
     public int solution(int n) {
         int sqrt = (int) Math.sqrt(n);
-        List<Integer> list = new ArrayList<>();
-
-        for (int i = 1; i <= sqrt; i++) {
-            if (n % i == 0) {
-                list.add(i);
-                if (i != n / i) {
-                    list.add(n / i);
-                }
-            }
-        }
-
-        return list.stream()
-                .mapToInt(Integer::intValue)
+        return IntStream.rangeClosed(1, sqrt) // 1부터 sqrt까지
+                .filter(i -> n % i == 0) // 스트림에서 n의 약수만을 선택
+                .flatMap(i -> IntStream.of(i, n / i)) //각 약수 i에 대해 i와 n/i를 스트림에 추가
+                .distinct() // 중복 제거
                 .sum();
     }
 }
+
 
 
 
