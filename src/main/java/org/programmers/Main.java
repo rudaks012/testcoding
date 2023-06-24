@@ -1,21 +1,23 @@
 package org.programmers;
 
-class Solution {
-    public String solution(int num, int num2, int num3) {
-        int sum = num + num2 + num3;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
-        return sum % 2 == 0 ? "Even" : "Odd";
+class Solution {
+    public long[] solution(int x, int n) {
+
+        return IntStream.range(0, n)
+                .mapToLong(i -> (long) x * (i + 1))
+                .toArray();
     }
 }
-
-
 
 
 public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String  solution = s.solution(3,5,8);
-        System.out.println(solution);
+        long[] solution = s.solution(4, 3);
+        System.out.println(Arrays.toString(solution));
     }
 }
