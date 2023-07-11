@@ -1,17 +1,12 @@
 package org.programmers;
 
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
     public int solution(int[] numbers) {
-        int answer = -1;
-        int sum = 45;
-
-        Arrays.sort(numbers);
-        for (int i = 0; i < numbers.length; i++) {
-            sum -= numbers[i];
-        }
-        return sum;
+        return IntStream.rangeClosed(0, 9)
+                .filter(i -> IntStream.of(numbers).noneMatch(j -> j == i))
+                .sum();
     }
 }
 
