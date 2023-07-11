@@ -1,33 +1,23 @@
 package org.programmers;
 
-import java.util.Arrays;
-
 class Solution {
     public int solution(int[] number) {
         int answer = 0;
-        Arrays.sort(number);
-
-        for (int i = 0; i < number.length - 2; i++) {
-            int left = i + 1;
-            int right = number.length - 1;
-
-            while (left < right) {
-                int sum = number[i] + number[left] + number[right];
-
-                if (sum == 0) {
-                    answer++;
-                    left++;
-                    right--;
-                } else if (sum < 0) {
-                    left++;
-                } else {
-                    right--;
+        // 모든 가능한 세 수의 조합을 찾습니다.
+        for (int i = 0; i < number.length; i++) {
+            for (int j = i + 1; j < number.length; j++) {
+                for (int k = j + 1; k < number.length; k++) {
+                    // 세 수의 합이 0이면, 삼총사를 만들 수 있는 경우의 수를 증가시킵니다.
+                    if (number[i] + number[j] + number[k] == 0) {
+                        answer++;
+                    }
                 }
             }
         }
         return answer;
     }
 }
+
 
 public class Main {
     public static void main(String[] args) {
