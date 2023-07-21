@@ -5,6 +5,7 @@ import java.util.stream.IntStream;
 class Solution {
     public double solution(int[] arr) {
         double v = IntStream.of(arr).sum() / (double) arr.length;
+        // System.out.println("v = " + v);
         return v;
     }
 }
