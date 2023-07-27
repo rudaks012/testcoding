@@ -1,17 +1,28 @@
 package org.programmers;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.List;
+
 class Solution {
-    public long solution(int price, int money, int count) {
-        long totalCost = 0;
+    public int solution(int[] ingredient) {
+        int answer = 0;
+        int[] correctOrder = {1, 2, 3, 1};
+        int[] window = new int[4];
 
-        for (int i = 1; i <= count; i++) {
-            totalCost += (long) price * i;
+        for (int i = 0; i < ingredient.length; i++) {
+            window[i % 4] = ingredient[i];
+            if (Arrays.equals(window, correctOrder)) {
+                answer++;
+            }
         }
-
-        long deficit = totalCost - money;
-        return deficit > 0 ? deficit : 0;
+        return answer;
     }
 }
+
+
 
 
 
@@ -19,7 +30,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        long solution = s.solution(3, 20, 4);
+        int solution = s.solution(new int[]{2, 1, 1, 2, 3, 1, 2, 3, 1});
         System.out.println(solution);
     }
 }
