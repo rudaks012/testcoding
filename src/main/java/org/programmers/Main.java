@@ -6,18 +6,11 @@ import java.util.Collections;
 class Solution {
 
     public int[] solution(long n) {
-        int[] answer = {};
-        String s = String.valueOf(n);
-        String[] split = s.split("");
-        Collections.reverse(Arrays.asList(split));
-
-        answer = new int[split.length];
-        for (int i = 0; i < split.length; i++) {
-            answer[i] = Integer.parseInt(split[i]);
-        }
-
-
-        return answer;
+        return new StringBuilder(String.valueOf(n))
+            .reverse()
+            .chars()
+            .map(Character::getNumericValue)
+            .toArray();
     }
 }
 
