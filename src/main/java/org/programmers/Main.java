@@ -4,21 +4,21 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 class Solution {
+
     public int solution(int[] ingredient) {
+        int[] stack = new int[ingredient.length];
+        int sp = 0;
         int answer = 0;
-        Deque<Integer> stack = new ArrayDeque<>();
-
-        for(int i = 0; i < ingredient.length; i++) {
-            stack.addLast(ingredient[i]);
-
-            while (canMakeBurger(stack)) {
-                makeBurger(stack);
+        for (int i : ingredient) {
+            stack[sp++] = i;
+            if (sp >= 4 && stack[sp - 1] == 1 && stack[sp - 2] == 3 && stack[sp - 3] == 2 && stack[sp - 4] == 1) {
+                sp -= 4;
                 answer++;
             }
         }
-
         return answer;
     }
+
 
     private boolean canMakeBurger(Deque<Integer> stack) {
         if (stack.size() < 4) {
@@ -51,7 +51,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        int solution = s.solution(new int[]{1, 3, 2, 1, 2, 1, 3, 1, 2});
+        int solution = s.solution(new int[]{2, 1, 1, 2, 3, 1, 2, 3, 1});
         System.out.println(solution);
     }
 }
