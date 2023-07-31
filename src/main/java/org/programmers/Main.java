@@ -1,13 +1,24 @@
 package org.programmers;
 
 class Solution {
+    boolean solution(String s) {
+        boolean answer = true;
+        int p = 0;
+        int y = 0;
 
-    public int solution(int n) {
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == 'p' || s.charAt(i) == 'P') {
+                p++;
+            } else if(s.charAt(i) == 'y' || s.charAt(i) == 'Y') {
+                y++;
+            }
+        }
 
-        return String.valueOf(n)
-                     .chars()
-                     .map(Character::getNumericValue)
-                     .sum();
+        if(p != y) {
+            answer = false;
+        }
+
+        return answer;
     }
 }
 
@@ -15,7 +26,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        int solution = s.solution(12345);
+        boolean solution = s.solution("pPoooyY");
         System.out.println(solution);
     }
 }
