@@ -1,19 +1,24 @@
 package org.programmers;
 
 class Solution {
-    boolean solution(String s) {
-        s = s.toUpperCase();
-
-        return s.chars().filter(c -> c == 'P').count() == s.chars().filter(c -> c == 'Y').count();
+    public int solution(String s) {
+        int answer = 0;
+        String minus = "";
+        if (s.charAt(0) == '-') {
+            minus = "-";
+            s = s.substring(1);
+        }
+        int parseInt = Integer.parseInt(s);
+        answer = Integer.parseInt(minus + parseInt);
+        return answer;
     }
-
 }
 
 public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        boolean solution = s.solution("pPoooyY");
+        int solution = s.solution("-1234");
         System.out.println(solution);
     }
 }
