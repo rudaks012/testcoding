@@ -1,15 +1,16 @@
 package org.programmers;
 
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.stream.IntStream;
 
 class Solution {
-    public long solution(long n) {
-        String[] list = String.valueOf(n).split("");
+    public long solution(int a, int b) {
+        int[] arr = {a, b};
+        Arrays.sort(arr);
 
-        Arrays.sort(list, Collections.reverseOrder());
-
-        return Long.parseLong(String.join("", list));
+        return IntStream.rangeClosed(arr[0], arr[1])
+                .asLongStream()
+                .sum();
     }
 }
 
@@ -17,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        long solution = s.solution(118372);
+        long solution = s.solution(3, 5);
         System.out.println(solution);
     }
 }
