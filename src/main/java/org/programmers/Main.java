@@ -1,12 +1,16 @@
 package org.programmers;
 
-import java.util.Arrays;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 class Solution {
     public String solution(String[] seoul) {
-        String answer = "";
-        return answer;
+        OptionalInt index = IntStream.range(0, seoul.length)
+                .filter(i -> seoul[i].equals("Kim"))
+                .findFirst();
+
+        return index.isPresent()
+                ? "김서방은 " + index.getAsInt() + "에 있다" : "";
     }
 }
 
