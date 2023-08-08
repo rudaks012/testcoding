@@ -4,13 +4,9 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 class Solution {
-    public long solution(int a, int b) {
-        int[] arr = {a, b};
-        Arrays.sort(arr);
-
-        return IntStream.rangeClosed(arr[0], arr[1])
-                .asLongStream()
-                .sum();
+    public String solution(String[] seoul) {
+        String answer = "";
+        return answer;
     }
 }
 
@@ -18,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        long solution = s.solution(3, 5);
+        String solution = s.solution(new String[]{"Jane", "Kim"});
         System.out.println(solution);
     }
 }
