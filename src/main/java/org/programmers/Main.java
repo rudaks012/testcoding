@@ -4,18 +4,7 @@ import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        int[] answer = {};
-
-        for (int j : arr) {
-            if (j % divisor == 0) {
-                answer = Arrays.copyOf(answer, answer.length + 1);
-                answer[answer.length - 1] = j;
-            }
-        }
-        answer = answer.length == 0 ? new int[]{-1} : answer;
-
-        Arrays.sort(answer);
-        return answer;
+        return Arrays.stream(arr).filter(factor -> factor % divisor == 0).toArray();
     }
 }
 
