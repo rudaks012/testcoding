@@ -3,10 +3,11 @@ package org.programmers;
 import java.util.Arrays;
 
 class Solution {
-    public String solution(String phone_number) {
-        char[] chars = phone_number.toCharArray();
-        Arrays.fill(chars, 0, chars.length - 4, '*');
-        return String.valueOf(chars);
+    public String solution(String s) {
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+
+        return new StringBuilder(new String(chars)).reverse().toString();
     }
 }
 
@@ -14,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String solution = s.solution("01033334444");
+        String solution = s.solution("Zbcdefg");
         System.out.println(solution);
     }
 }
