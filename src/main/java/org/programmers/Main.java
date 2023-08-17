@@ -1,29 +1,27 @@
 package org.programmers;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 class Solution {
     public String solution(String s) {
-        char[] chars = s.toCharArray();
-        Arrays.sort(chars);
-        new StringBuilder(new String(chars)).reverse().toString();
+        return s.length() % 2 == 0 ? getMiddleEven(s) : getMiddleOdd(s);
+    }
 
+    private String getMiddleEven(String s) {
+        int center = s.length() / 2;
+        return s.substring(center - 1, center + 1);
+    }
 
-        return s.chars()
-                .mapToObj(c -> (char) c)
-                .sorted((a, b) -> b - a)
-                .map(String::valueOf)
-                .collect(Collectors.joining());
+    private String getMiddleOdd(String s) {
+        return String.valueOf(s.charAt(s.length() / 2));
     }
 }
+
 
 
 public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String solution = s.solution("Zbcdefg");
+        String solution = s.solution("abcde");
         System.out.println(solution);
     }
 }
