@@ -7,6 +7,7 @@ class Solution {
 
     private String getMiddleEven(String s) {
         int center = s.length() / 2;
+
         return s.substring(center - 1, center + 1);
     }
 
