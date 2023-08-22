@@ -1,18 +1,16 @@
 package org.programmers;
 
 class Solution {
-    public String solution(String s) {
-        return s.length() % 2 == 0 ? getMiddleEven(s) : getMiddleOdd(s);
-    }
 
-    private String getMiddleEven(String s) {
-        int center = s.length() / 2;
-
-        return s.substring(center - 1, center + 1);
-    }
-
-    private String getMiddleOdd(String s) {
-        return String.valueOf(s.charAt(s.length() / 2));
+    public long solution(long n) {
+        long answer = 0;
+        double x = Math.sqrt(n);
+        if (x == (int) x) {
+            answer = (long) Math.pow(x + 1, 2);
+        } else {
+            answer = -1;
+        }
+        return answer;
     }
 }
 
@@ -22,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String solution = s.solution("abcde");
+        long solution = s.solution(121);
         System.out.println(solution);
     }
 }
