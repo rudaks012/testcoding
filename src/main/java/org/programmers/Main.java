@@ -1,18 +1,16 @@
 package org.programmers;
 
 class Solution {
-
-    public long solution(long n) {
-        double sqrt = Math.sqrt(n);
-
-        if (isInteger(sqrt)) {
-            return (long) Math.pow(sqrt + 1, 2);
+    public String solution(int n) {
+        StringBuilder answer = new StringBuilder();
+        for(int i = 0; i < n; i++) {
+            if(i % 2 == 0) {
+                answer.append("수");
+            } else {
+                answer.append("박");
+            }
         }
-        return -1;
-    }
-
-    private boolean isInteger(double sqrt) {
-        return sqrt == (int) sqrt;
+        return answer.toString();
     }
 }
 
@@ -22,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        long solution = s.solution(121);
+        String solution = s.solution(3);
         System.out.println(solution);
     }
 }
