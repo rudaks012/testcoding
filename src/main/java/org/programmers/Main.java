@@ -3,14 +3,16 @@ package org.programmers;
 class Solution {
 
     public long solution(long n) {
-        long answer = 0;
-        double x = Math.sqrt(n);
-        if (x == (int) x) {
-            answer = (long) Math.pow(x + 1, 2);
-        } else {
-            answer = -1;
+        double sqrt = Math.sqrt(n);
+
+        if (isInteger(sqrt)) {
+            return (long) Math.pow(sqrt + 1, 2);
         }
-        return answer;
+        return -1;
+    }
+
+    private boolean isInteger(double sqrt) {
+        return sqrt == (int) sqrt;
     }
 }
 
