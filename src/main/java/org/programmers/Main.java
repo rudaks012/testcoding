@@ -1,16 +1,11 @@
 package org.programmers;
 
+import java.util.Collections;
+
 class Solution {
     public String solution(int n) {
-        StringBuilder answer = new StringBuilder();
-        for(int i = 0; i < n; i++) {
-            if(i % 2 == 0) {
-                answer.append("수");
-            } else {
-                answer.append("박");
-            }
-        }
-        return answer.toString();
+        // Collections.nCopies()는 Java의 Collections 유틸리티 클래스에 있는 메소드로, 주어진 객체를 n번 복사한 불변 리스트를 반환
+        return String.join("", Collections.nCopies(n, "수박")).substring(0, n);
     }
 }
 
