@@ -5,14 +5,15 @@ import java.util.Arrays;
 class Solution {
     public int solution(int[] d, int budget) {
         int answer = 0;
+        int sum = 0;
+        Arrays.sort(d);
 
-        Arrays.sort(d); // 배열 오름차순 정렬
-
-        for (int j : d) {
-            if (budget - j < 0) // 예산 초과 시 종료
-                break;
-            budget -= j;
-            answer++;
+        for(int i = 0; i < d.length; i++) {
+        	sum += d[i];
+        	if(sum > budget) {
+        		answer = i;
+        		break;
+        	}
         }
 
         return answer;
