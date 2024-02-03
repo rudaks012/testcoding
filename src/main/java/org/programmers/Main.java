@@ -1,22 +1,24 @@
 package org.programmers;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 class Solution {
-    public int solution(int[] d, int budget) {
-        int answer = 0;
-        int sum = 0;
-        Arrays.sort(d);
+    public int solution(int first, int second) {
 
-        for(int i = 0; i < d.length; i++) {
-        	sum += d[i];
-        	if(sum > budget) {
-        		answer = i;
-        		break;
-        	}
+        Scanner sc = new Scanner(System.in);
+        first = sc.nextInt();
+        second = sc.nextInt();
+
+
+        for (int i = 0; i < second; i++) {
+            for (int j = 0; j < first; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
         }
 
-        return answer;
+        return 0;
     }
 }
 
@@ -25,7 +27,6 @@ public class Main {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        int solution = s.solution(new int[] {1,3,2,5,4}, 9);
-        System.out.println(solution);
+        s.solution(5, 3);
     }
 }
